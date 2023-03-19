@@ -14,7 +14,7 @@ const ownerSchema = new mongoose.Schema({
 const petSchema = new mongoose.Schema({
   name: String,
   owner: {
-    type: Schema.Types.ObjectId,
+    type: mongoose.Schema.Types.ObjectId,
     ref: "Owner"
   }  
 },
