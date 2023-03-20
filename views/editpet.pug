@@ -1,0 +1,13 @@
+doctype html
+html
+    head
+    title Login
+    //- link(rel='stylesheet' href='static/css/sign-up.css')
+    body
+    #container
+        form(action='/owners/:ownerId/pets' method='PATCH')
+            h1 what is your new pet name
+            label name:
+            input(type='text' name='petname' required)
+
+            input(type='submit' value='edit-pet')

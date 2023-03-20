@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const ownerSchema = new mongoose.Schema({
-  name: String,
+  name: {type: String, required: true},
   pets: [
     {
       type: mongoose.Schema.Types.ObjectId,
@@ -12,7 +12,7 @@ const ownerSchema = new mongoose.Schema({
 );
 
 const petSchema = new mongoose.Schema({
-  name: String,
+  name: {type: String, required: true},
   owner: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Owner"

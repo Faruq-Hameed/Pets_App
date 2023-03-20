@@ -3,15 +3,15 @@ const mongoose = require('mongoose')
 const  logger = require('morgan') 
 const helmet = require('helmet');
 require('dotenv').config({path: './.env'})
-const owners = require('./routes')
+const {owners, pets} = require('./routes')
 
 const app = express()
 const port = process.env.PORT || 3000
 
 //mongodb connection
-mongoose.connect(process.env.URI)
+mongoose.connect(process.env.MONGODB_URL + '/pets_app')
     .then(result => {
-        console.log("connected to db Pets_App successfully")
+        console.log(`connected to db Pets_App successfully`)
     })
     .catch(err => { console.log(err.message) })
 
@@ -23,6 +23,9 @@ app.use(logger(":method :url :status :res[content-length] - :response-time ms - 
 app.use(helmet())
 
 app.use('/owners', owners)
+app.use('/owners', pets)
+
+
 
 
 app.set('view engine', 'pug');
